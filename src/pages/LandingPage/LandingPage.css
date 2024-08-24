@@ -1,0 +1,246 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  background-color: black;
+  color: white;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.landing-container {
+  background-image: url('../../media/330.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.landing-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(34, 34, 34, 0.4); /* Base overlay */
+  z-index: 2;
+  pointer-events: none;
+}
+
+.landing-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.7) 70%);
+  mix-blend-mode: overlay;
+  animation: rotateGradient 15s linear infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+@keyframes rotateGradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  text-align: center;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 50px; /* Shifted slightly right for wide screens */
+  max-width: 10%; /* Smaller size for wide screens */
+  height: auto;
+  z-index: 5;
+  transition: max-width 0.3s ease-in-out;
+}
+
+@media (min-width: 1600px) {
+  body, html {
+    overflow-y: auto; /* Enable vertical scrolling for parallax effect */
+  }
+
+  .landing-container {
+    position: absolute;
+    background-attachment: fixed; /* Parallax effect */
+    background-size: 80%; /* Zoom out the image */
+    background-position: right center; /* Shift the image to the right */
+    height: 150vh; /* Increase height to emphasize parallax effect */
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6) 25%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.2) 75%, rgba(0, 0, 0, 0) 85%), 
+                      url('../../media/330.jpg'); /* Gradual transition to black */
+  }
+
+  .landing-container::before {
+    background: rgba(34, 34, 34, 0.1); /* Further reduce the overlay opacity to make the face clearer */
+  }
+
+  .landing-container::after {
+    background: none; /* Disable radial gradient */
+    animation: none; /* Disable rotating gradient */
+  }
+
+  .logo {
+    left: 70px; /* Further shift for very wide screens */
+    max-width: 8%; /* Further adjust size for ultra-wide screens */
+  }
+}
+
+@media (min-width: 1600px) {
+  body, html {
+    overflow-y: auto; /* Enable vertical scrolling for parallax effect */
+  }
+
+  .landing-container {
+    position: absolute;
+    background-attachment: fixed; /* Parallax effect */
+    background-size: 70%; /* Zoom out the image by 10% more */
+    background-position: right center; /* Shift the image to the right */
+    height: 150vh; /* Increase height to emphasize parallax effect */
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0) 50%), 
+                      url('../../media/330.jpg'); /* Gradual transition to black */
+  }
+
+  .landing-container::before {
+    background: rgba(34, 34, 34, 0.05); /* Minimize the overlay to keep the face clear */
+  }
+
+  .landing-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80%; /* Decrease the width of the rotating rectangle */
+    height: 110%; /* Decrease the height of the rotating rectangle */
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.8));
+    mix-blend-mode: overlay;
+    animation: rotateGradient 15s linear infinite;
+    pointer-events: none;
+    z-index: 3; /* Ensure it appears above the image */
+    transform-origin: center; /* Ensure rotation is centered over the image */
+    transform: translateX(40%); /* Shift the rotating effect further to the right */
+  }
+
+  @keyframes rotateGradient {
+    0% {
+      transform: translateX(40%) rotate(0deg);
+    }
+    100% {
+      transform: translateX(40%) rotate(360deg);
+    }
+  }
+
+  .logo {
+    left: 70px; /* Further shift for very wide screens */
+    max-width: 8%; /* Further adjust size for ultra-wide screens */
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1600px) {
+  .landing-container {
+    background-size: 70%; /* Zoom out the image by 10% more */
+    background-position: right center; /* Shift the image to the right */
+    background-attachment: fixed; /* Parallax effect */
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0) 50%), 
+                      url('../../media/330.jpg'); /* Gradual transition to black */
+  }
+
+  .landing-container::before {
+    background: rgba(34, 34, 34, 0.05); /* Minimize the overlay to keep the face clear */
+  }
+
+  .landing-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80%; /* Decrease the width of the rotating rectangle */
+    height: 110%; /* Decrease the height of the rotating rectangle */
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4), rgba(0, 0, 0, 0.8));
+    mix-blend-mode: overlay;
+    animation: rotateGradient 15s linear infinite;
+    pointer-events: none;
+    z-index: 3; /* Ensure it appears above the image */
+    transform-origin: center; /* Ensure rotation is centered over the image */
+    transform: translateX(40%); /* Shift the rotating effect further to the right */
+  }
+
+  @keyframes rotateGradient {
+    0% {
+      transform: translateX(36%) rotate(0deg);
+    }
+    100% {
+      transform: translateX(36%) rotate(360deg);
+    }
+  }
+
+  .logo {
+    max-width: 12%;
+    left: 35px; /* Slightly shift the logo to the right for laptops */
+  }
+}
+
+
+@media (max-width: 768px) {
+  .landing-container {
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .landing-container::before {
+    background: radial-gradient(
+      circle at center, 
+      rgba(34, 34, 34, 0.2), 
+      rgba(17, 17, 17, 0.4) 70%, 
+      black 100%
+    );
+  }
+
+  .landing-container::after {
+    animation: rotateGradient 15s linear infinite; /* Keep rotating gradient for smaller screens */
+  }
+
+  .logo {
+    max-width: 20%;
+    top: 10px;
+    left: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay {
+    padding: 10px;
+  }
+
+  .landing-container::after {
+    animation: rotateGradient 15s linear infinite; /* Keep rotating gradient for smaller screens */
+  }
+
+  .logo {
+    max-width: 25%;
+    top: 5px;
+    left: 5px;
+  }
+}
