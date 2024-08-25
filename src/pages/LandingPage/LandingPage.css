@@ -138,9 +138,9 @@ body, html {
   }
 
   .camera-wrapper {
-    left: 50px; /* Align with logo on standard wide screens */
-    bottom: 40px; /* Slightly above the bottom of the screen */
-    width: 65px; /* Slightly smaller camera wrapper */
+    left: 70px;
+    bottom: 40px;
+    width: 65px; 
     height: 65px;
   }
 }
@@ -153,9 +153,9 @@ body, html {
   }
 
   .camera-wrapper {
-    left: 80px; /* Align with logo on tablets */
-    bottom: 30px; /* Slightly above the bottom of the screen */
-    width: 60px; /* Smaller camera wrapper */
+    left: 80px; 
+    bottom: 30px; 
+    width: 60px; 
     height: 60px;
   }
 }
@@ -168,9 +168,9 @@ body, html {
   }
 
   .camera-wrapper {
-    left: 50px; /* Align with logo on mobile screens */
-    bottom: 30px; /* Slightly above the bottom of the screen */
-    width: 50px; /* Smaller camera wrapper */
+    left: 50px; 
+    bottom: 30px; 
+    width: 50px; 
     height: 50px;
   }
 
@@ -184,7 +184,7 @@ body, html {
   }
 
   .landing-container::after {
-    animation: rotateGradient 15s linear infinite; /* Keep rotating gradient for smaller screens */
+    animation: rotateGradient 15s linear infinite; 
   }
 }
 
@@ -195,13 +195,13 @@ body, html {
   }
 
   .camera-wrapper {
-    left: 20px; /* Align with logo on very small screens */
-    bottom: 20px; /* Slightly above the bottom of the screen */
-    width: 45px; /* Smaller camera wrapper */
+    left: 20px; 
+    bottom: 20px; 
+    width: 45px; 
     height: 45px;
   }
 
   .landing-container::after {
-    animation: rotateGradient 15s linear infinite; /* Keep rotating gradient for smaller screens */
+    animation: rotateGradient 15s linear infinite; 
   }
 }
