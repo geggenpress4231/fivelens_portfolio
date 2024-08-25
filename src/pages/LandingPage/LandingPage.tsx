@@ -1,11 +1,15 @@
 import React from 'react';
 import './LandingPage.css';
-import logo from '../../media/logo.png'; // Adjust the path to your logo file
+import Logo from '../../components/Logo'; // Import the new Logo Component
+import Camera from '../../components/Camera'; // Import the Camera Component
 
 const LandingPage = () => {
   return (
     <div className="landing-container">
-      <img src={logo} alt="FiveLens Logo" className="logo" />
+      <Logo /> {/* Use the Logo component */}
+      <div className="camera-wrapper">
+        <Camera />
+      </div>
       <div className="overlay">
         {/* Other content can go here if needed */}
       </div>

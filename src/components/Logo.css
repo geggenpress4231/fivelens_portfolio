@@ -1,0 +1,79 @@
+.logo-container {
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+    transition: top 0.3s ease-in-out, left 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  .logo {
+    max-width: 100px; /* Set a fixed max-width to better control the logo size */
+    height: auto;
+    padding: 0; /* Ensure no padding */
+    margin: 0; /* Ensure no margin */
+    border-radius: 50%; /* Ensure the image remains circular */
+  }
+  
+  .logo-text {
+    font-family: 'Cursive', sans-serif;
+    font-size: 18px; /* Adjust the font size */
+    color: white; /* Set the text color */
+    text-align: center;
+    margin-top: 5px; /* Space between the logo and the text */
+  }
+  
+  @media (min-width: 1600px) {
+    .logo-container {
+      left: 70px;
+      top: 30px;
+    }
+    .logo {
+      max-width: 120px; /* Slightly larger for ultra-wide screens */
+    }
+    .logo-text {
+      font-size: 20px; /* Adjust the font size for ultra-wide screens */
+    }
+  }
+  
+  @media (min-width: 1200px) and (max-width: 1600px) {
+    .logo-container {
+      left: 35px;
+      top: 20px;
+    }
+    .logo {
+      max-width: 110px; /* Adjust as necessary for standard wide screens */
+    }
+    .logo-text {
+      font-size: 18px; /* Adjust the font size for standard wide screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .logo-container {
+      left: 10px;
+      top: 10px;
+    }
+    .logo {
+      max-width: 80px; /* Adjust for smaller screens */
+    }
+    .logo-text {
+      font-size: 16px; /* Adjust the font size for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .logo-container {
+      left: 5px;
+      top: 5px;
+    }
+    .logo {
+      max-width: 60px; /* Further reduce size for very small screens */
+    }
+    .logo-text {
+      font-size: 14px; /* Further reduce the font size for very small screens */
+    }
+  }
+  
