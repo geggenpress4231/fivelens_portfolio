@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Logo.css';
-import logo from '../media/logo.png';
+import logo from '../../media/logo.png';
 
 const Logo: React.FC = () => {
   const navigate = useNavigate(); // Hook to navigate between routes

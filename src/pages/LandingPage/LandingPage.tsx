@@ -1,7 +1,7 @@
 import React from 'react';
 import './LandingPage.css';
-import Logo from '../../components/Logo'; // Import the new Logo Component
-import Camera from '../../components/Camera'; // Import the Camera Component
+import Logo from '../../components/Logo/Logo'; // Import the new Logo Component
+import Camera from '../../components/Camera/Camera'; // Import the Camera Component
 
 const LandingPage = () => {
   return (

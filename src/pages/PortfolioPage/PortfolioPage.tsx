@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './PortfolioPage.css';
-import Logo from '../../components/Logo';
-import Camera from '../../components/Camera';
-import RollUp from '../../components/Rollup';
+import Logo from '../../components/Logo/Logo';
+import Camera from '../../components/Camera/Camera';
+import RollUp from '../../components/Rollup/Rollup';
 
 const PortfolioPage: React.FC = () => {
   const [isRollUpVisible, setIsRollUpVisible] = useState(false);

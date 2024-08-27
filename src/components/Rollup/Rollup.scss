@@ -1,0 +1,117 @@
+// Define variables for common values
+$container-width: 115px;
+$border-color: #2a2a2a;
+$gradient-start: #4b4b4b;
+$gradient-end: #3a2f1b;
+$white-color: #fff;
+$dark-color: #333;
+$hover-bg-color: #f0f0f0;
+$border-radius: 8px;
+$box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+
+// Mixin for repeating linear gradient
+@mixin repeating-gradient($direction, $size) {
+  background: repeating-linear-gradient(
+    to $direction,
+    transparent,
+    transparent $size,
+    $white-color $size,
+    $white-color (2 * $size)
+  );
+}
+
+// Animation keyframes
+@keyframes rollUp {
+  0% {
+    transform: translateY(30px); // Start slightly below the camera head
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes rollDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(30px); // End at the position slightly below the camera head
+  }
+}
+
+// RollUpContainer styles
+.RollUpContainer {
+  position: absolute;
+  bottom: calc(100% + 10px); // Slightly above the icon with a small gap
+  left: 50%;
+  transform: translateX(-50%); // Center align with the icon
+  width: $container-width;
+  background: linear-gradient(to right, $gradient-start, $gradient-end);
+  border: 2px solid $border-color;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+  z-index: 999;
+  padding: 16px;
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+  display: none;
+
+  &.isVisible {
+    display: block;
+    animation-name: rollUp;
+  }
+
+  &.isHidden {
+    display: block;
+    animation-name: rollDown;
+  }
+
+  // Using the repeating gradient mixin
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    @include repeating-gradient(right, 8px);
+  }
+
+  &::before {
+    top: -10px; /* Position above the top border */
+  }
+
+  &::after {
+    bottom: -10px; /* Position below the bottom border */
+  }
+}
+
+// GenreList styles
+.GenreList {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+
+  li {
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    background: $white-color;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    border: 1px solid $dark-color;
+    color: $dark-color;
+    font-weight: bold;
+    transition: background 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      background-color: $hover-bg-color;
+      color: #000;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
