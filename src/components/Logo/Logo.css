@@ -54,8 +54,8 @@
   
   @media (max-width: 480px) {
     .logo-container {
-      left: 5px;
-      top: 5px;
+      left: 25px;
+      top: 10px;
     }
     .logo {
       max-width: 60px; /* Further reduce size for very small screens */

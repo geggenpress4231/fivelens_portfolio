@@ -28,8 +28,8 @@ const ImageViewer: React.FC<ImageViewerProps> = ({ open, imageSrc, onClose }) =>
           left: '50%',
           transform: 'translate(-50%, -50%)',
           width: 'auto',
-          maxWidth: '90%',
-          maxHeight: '90%',
+          maxWidth: '90vw',  // 90% of the viewport width
+          maxHeight: '90vh', // 90% of the viewport height
           boxShadow: 24,
           display: 'flex',
           alignItems: 'center',
@@ -45,6 +45,7 @@ const ImageViewer: React.FC<ImageViewerProps> = ({ open, imageSrc, onClose }) =>
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            overflow: 'hidden', // Ensure no overflow
           }}
         >
           <CardMedia
@@ -52,11 +53,11 @@ const ImageViewer: React.FC<ImageViewerProps> = ({ open, imageSrc, onClose }) =>
             image={imageSrc}
             alt="Selected Image"
             sx={{
-              maxWidth: '100%',
-              maxHeight: '100%',
-              width: 'auto',
-              height: 'auto',
-              objectFit: 'contain',
+              width: '100%',
+              height: '100%',
+              maxWidth: '90vw',
+              maxHeight: '90vh',
+              objectFit: 'contain', // Ensure the image scales to fit within the constraints
             }}
           />
         </Card>
