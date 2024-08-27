@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect } from 'react';
-
 import './Rollup.scss';
+import { useGalleryContext } from '../Gallery/GalleryContext';
 
 interface RollUpProps {
   isVisible: boolean;
@@ -26,6 +26,7 @@ function reducer(state: State, action: Action): State {
 
 const RollUp: React.FC<RollUpProps> = ({ isVisible, onClose }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const { setCategory } = useGalleryContext();
 
   useEffect(() => {
     if (!state.initialized) {
@@ -45,13 +46,20 @@ const RollUp: React.FC<RollUpProps> = ({ isVisible, onClose }) => {
     return null; // Don't render until initialized
   }
 
+  const handleSelect = (category: string) => {
+    setCategory(category);
+    if (onClose) onClose(); // Close the RollUp after selection
+  };
+
   return (
     <div className={`RollUpContainer ${isVisible ? 'isVisible' : 'isHidden'}`}>
       <ul className="GenreList">
-        <li onClick={onClose}>Landscape</li>
-        <li onClick={onClose}>Portrait</li>
-        <li onClick={onClose}>Wildlife</li>
-        <li onClick={onClose}>Urban</li>
+        <li onClick={() => handleSelect('abstract')}>Abstract</li>
+        <li onClick={() => handleSelect('eclipse')}>Eclipse</li>
+        <li onClick={() => handleSelect('wildlife')}>Wildlife</li>
+        <li onClick={() => handleSelect('fashion')}>Fashion</li>
+        <li onClick={() => handleSelect('landscape')}>Landscape</li>
+        <li onClick={() => handleSelect('all')}>All</li>
       </ul>
     </div>
   );

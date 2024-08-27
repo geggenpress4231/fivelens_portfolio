@@ -24,10 +24,9 @@ const PortfolioPage: React.FC = () => {
       </div>
       {isRollUpVisible && <RollUp isVisible={isRollUpVisible} onClose={handleClose} />}
       <div className="gallery-wrapper">
-      <Gallery/>
+        <Gallery />
+      </div>
     </div>
-    </div>
-   
   );
 };
 

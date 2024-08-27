@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Gallery.css';
+import { useGalleryContext } from './GalleryContext';
+import ImageViewer from '../ImageViewer/ImageViewer';
 
-// Abstract images
+// Image arrays
 const abstractImages = [
     '/abstract/111.jpg',
     '/abstract/155.jpg',
@@ -10,7 +12,6 @@ const abstractImages = [
     '/abstract/343.jpg',
 ];
 
-// Eclipse images
 const eclipseImages = [
     '/eclipse/282.jpg',
     '/eclipse/283.jpg',
@@ -19,7 +20,6 @@ const eclipseImages = [
     '/eclipse/293.jpg',
 ];
 
-// Fashion images
 const fashionImages = [
     '/fashion/173.jpg',
     '/fashion/175.jpg',
@@ -29,7 +29,6 @@ const fashionImages = [
     '/fashion/pt08.jpg',
 ];
 
-// Landscape images
 const landscapeImages = [
     '/landscape/27.jpg',
     '/landscape/217.jpg',
@@ -49,7 +48,6 @@ const landscapeImages = [
     '/landscape/st.lawrence river.jpg',
 ];
 
-// Wildlife images
 const wildlifeImages = [
     '/wildlife/9.jpg',
     '/wildlife/15.jpg',
@@ -60,7 +58,6 @@ const wildlifeImages = [
     '/wildlife/331.jpg',
 ];
 
-// Combine all image URLs into one array
 const allImages = [
     ...abstractImages,
     ...eclipseImages,
@@ -70,16 +67,55 @@ const allImages = [
 ];
 
 const Gallery: React.FC = () => {
-    return (
-        <div className="gallery">
-            {allImages.map((imgSrc, index) => (
-                <div className="pics" key={index}>
-                    <img src={imgSrc} alt={`gallery-img-${index}`} />
-                </div>
-            ))}
-        
-        </div>
-    );
+  const { category } = useGalleryContext();
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const getImagesByCategory = () => {
+    switch (category) {
+      case 'abstract':
+        return abstractImages;
+      case 'eclipse':
+        return eclipseImages;
+      case 'fashion':
+        return fashionImages;
+      case 'landscape':
+        return landscapeImages;
+      case 'wildlife':
+        return wildlifeImages;
+      default:
+        return allImages;
+    }
+  };
+
+  const imagesToRender = getImagesByCategory();
+
+  const handleImageClick = (imgSrc: string) => {
+    setSelectedImage(imgSrc);
+  };
+
+  const handleClose = () => {
+    setSelectedImage(null);
+  };
+
+  return (
+    <>
+      <div className="gallery">
+        {imagesToRender.map((imgSrc, index) => (
+          <div className="pics" key={index} onClick={() => handleImageClick(imgSrc)}>
+            <img src={imgSrc} alt={`gallery-img-${index}`} />
+          </div>
+        ))}
+      </div>
+
+      {selectedImage && (
+        <ImageViewer
+          open={Boolean(selectedImage)}
+          imageSrc={selectedImage}
+          onClose={handleClose}
+        />
+      )}
+    </>
+  );
 };
 
 export default Gallery;

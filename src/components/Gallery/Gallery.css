@@ -1,4 +1,3 @@
-/* Gallery.css */
 .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -10,16 +9,16 @@
     position: relative; /* Position relative for the scroll indicator */
     background-color: #f0f0f5; /* Light background for contrast */
     border-radius: 12px; /* Rounded corners for the entire gallery */
+    justify-content: flex-start; /* Align items to the start of the row */
+    box-sizing: border-box; /* Ensure padding is included in the container's width */
 }
 
-
-
 .pics {
-    flex: 1 1 calc(33.333% - 24px); /* Each item takes up a third of the container */
+    flex: 1 1 calc(33.333% - 16px); /* Adjust to prevent overflow */
+    max-width: calc(33.333% - 16px); /* Prevent items from growing beyond a third of the container */
     box-sizing: border-box; /* Ensure padding and borders are included in the width/height */
     overflow: hidden; /* Hide any overflow */
     position: relative;
-    height: auto;
     z-index: 1; /* Default z-index */
     aspect-ratio: 3/2; /* Maintain a consistent aspect ratio for all images */
     border-radius: 15px; /* Rounded corners for images */
@@ -32,7 +31,6 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
     z-index: 10; /* Increase z-index on hover */
 }
-
 
 .pics img {
     width: 100%;
