@@ -20,6 +20,9 @@ body, html {
   left: 0;
   z-index: 1;
   background: radial-gradient(circle, rgba(0, 0, 0, 0.8), rgba(34, 34, 34, 0.8));
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 /* Camera Wrapper Positioning */
@@ -29,8 +32,20 @@ body, html {
   z-index: 4;
   width: 60px;
   height: 60px;
-  left: 50px;
+  left: 60px;
 }
+
+/* Gallery Wrapper */
+.gallery-wrapper {
+  background-color: grey;
+  width: 90vw; /* Occupy 90% of the screen width */
+  height: 100vh; /* Full height */
+  margin-left: 15vw;
+  border-radius: 20px;
+  z-index: 2;
+  overflow: hidden; /* Ensure the wrapper handles overflow correctly */
+}
+
 
 /* Wide Screens (1600px and above) */
 @media (min-width: 1600px) {
@@ -39,40 +54,66 @@ body, html {
   }
 
   .camera-wrapper {
-    left: 70px;
+    left: 50px;
     bottom: 40px;
     width: 70px;
     height: 70px;
+  }
+
+  .gallery-wrapper {
+    width: 85vw; /* Adjust width for larger screens */
+    margin-left: 15vw; /* Keep the right side touching the screen */
   }
 }
 
 /* Standard Wide Screens (1200px to 1599px) */
 @media (min-width: 1200px) and (max-width: 1600px) {
   .camera-wrapper {
-    left: 70px;
+    left: 50px;
     bottom: 40px;
     width: 65px;
     height: 65px;
+  }
+
+  .gallery-wrapper {
+    width: 90vw; /* Consistent width */
+    margin-left: 15vw; /* Ensure the right side touches the screen */
   }
 }
 
 /* Tablets (768px to 1199px) */
 @media (max-width: 1199px) and (min-width: 769px) {
+  .portfolio-container {
+    flex-direction: row; /* Keep items in a row */
+  }
+
   .camera-wrapper {
-    left: 80px;
+    left: 50px;
     bottom: 30px;
     width: 60px;
     height: 60px;
+  }
+
+  .gallery-wrapper {
+    width: 80vw; /* Reduce width slightly */
+    margin-left: auto; /* Ensure it stays on the right */
+    height: 100vh; /* Full height */
+   
   }
 }
 
 /* Mobile Screens (below 768px) */
 @media (max-width: 768px) {
   .camera-wrapper {
-    left: 50px;
+    left: 20px;
     bottom: 30px;
     width: 50px;
     height: 50px;
+  }
+
+  .gallery-wrapper {
+    width: 100vw; /* Full width on smaller screens */
+    margin-left: 0; /* No margin, take full screen */
   }
 }
 
@@ -83,5 +124,10 @@ body, html {
     bottom: 20px;
     width: 45px;
     height: 45px;
+  }
+
+  .gallery-wrapper {
+    width: 100vw; /* Full width on very small screens */
+    margin-left: 0; /* No margin, take full screen */
   }
 }

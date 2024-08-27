@@ -1,0 +1,46 @@
+/* Gallery.css */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px; /* Space between items */
+    padding: 12px;
+    height: calc(100vh - 24px); /* Adjust height to fit within the viewport */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Disable horizontal scrolling */
+    position: relative; /* Position relative for the scroll indicator */
+    background-color: #f0f0f5; /* Light background for contrast */
+    border-radius: 12px; /* Rounded corners for the entire gallery */
+}
+
+
+
+/* Hover effect for gallery items */
+.pics {
+    flex: 1 1 calc(33.333% - 24px); /* Each item takes up a third of the container */
+    box-sizing: border-box; /* Ensure padding and borders are included in the width/height */
+    overflow: hidden; /* Hide any overflow */
+    position: relative;
+    height: auto;
+    aspect-ratio: 3/2; /* Maintain a consistent aspect ratio for all images */
+    border-radius: 15px; /* Rounded corners for images */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.pics:hover {
+    transform: scale(1.08); /* Slightly increase size on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.pics img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure images cover their container while maintaining aspect ratio */
+    display: block;
+    border-radius: inherit; /* Inherit the border-radius of the parent .pics */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.pics img:hover {
+    transform: scale(1.05); /* Slightly increase size on hover */
+}

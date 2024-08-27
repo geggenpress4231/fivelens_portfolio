@@ -3,6 +3,7 @@ import './PortfolioPage.css';
 import Logo from '../../components/Logo/Logo';
 import Camera from '../../components/Camera/Camera';
 import RollUp from '../../components/Rollup/Rollup';
+import Gallery from '../../components/Gallery/Gallery';
 
 const PortfolioPage: React.FC = () => {
   const [isRollUpVisible, setIsRollUpVisible] = useState(false);
@@ -22,7 +23,11 @@ const PortfolioPage: React.FC = () => {
         <Camera onClick={handleCameraClick} />
       </div>
       {isRollUpVisible && <RollUp isVisible={isRollUpVisible} onClose={handleClose} />}
+      <div className="gallery-wrapper">
+      <Gallery/>
     </div>
+    </div>
+   
   );
 };
 
