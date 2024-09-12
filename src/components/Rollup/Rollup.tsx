@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Rollup.scss';
 import { useGalleryContext } from '../Gallery/GalleryContext';
 
@@ -7,41 +7,24 @@ interface RollUpProps {
   onClose?: () => void;
 }
 
-type State = {
-  initialized: boolean;
-};
-
-type Action = { type: 'INITIALIZE' };
-
-const initialState: State = { initialized: false };
-
-function reducer(state: State, action: Action): State {
-  switch (action.type) {
-    case 'INITIALIZE':
-      return { initialized: true };
-    default:
-      throw new Error('Unknown action');
-  }
-}
-
 const RollUp: React.FC<RollUpProps> = ({ isVisible, onClose }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [initialized, setInitialized] = useState(false);
   const { setCategory } = useGalleryContext();
 
   useEffect(() => {
-    if (!state.initialized) {
-      dispatch({ type: 'INITIALIZE' });
+    if (!initialized) {
+      setInitialized(true);
       console.log('RollUp initialized');
     }
-  }, [state.initialized]);
+  }, [initialized]);
 
   useEffect(() => {
     console.log('RollUp visibility changed:', isVisible);
   }, [isVisible]);
 
-  console.log('RollUp rendering:', { isVisible, initialized: state.initialized });
+  console.log('RollUp rendering:', { isVisible, initialized });
 
-  if (!state.initialized) {
+  if (!initialized) {
     console.log('RollUp not initialized yet');
     return null; // Don't render until initialized
   }
